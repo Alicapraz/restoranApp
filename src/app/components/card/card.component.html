@@ -1,0 +1,39 @@
+
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+</head>
+
+
+  <ion-card *ngFor="let restaurant of restaurants" class="custom-card" (click)="openDetail(restaurant.id)"> 
+    <ion-card-header class="card-header">
+      <div class="">
+        <div class=" subtitle-container" >
+          <ion-card-subtitle class="card-subtitle">%{{ restaurant.storeInfo.rate }} Orwi Puan</ion-card-subtitle>
+        </div>
+  
+        <div class=" favorite-icon-container" slot="end">
+          <img [src]="isFavorite(restaurant) ? 'assets/favv-filled.png' : 'assets/favv.png'" 
+               class="favorite-icon" 
+               (click)="toggleFavorite(restaurant)"/>
+        </div>
+      </div>
+
+    </ion-card-header>
+    
+    <ion-img [src]="restaurant.images[0].base64 ? restaurant.images[0].base64 : 'assets\tuzu-biberi-kahvalti-5.png'" [alt]="restaurant.title" />
+
+    <ion-card-content class="card-content">
+      <p class="main-text">{{restaurant.title}}</p>
+      <div class="additional-info">
+        <span><img src="assets\Group 42151.png" alt=""> 20-25dk</span>
+        <span class="distance"><img src="assets\Group 42152.png" alt="">{{restaurant.distance}}</span>
+        <span><img src="assets\Group 42153.png" alt=""> {{restaurant.storeInfo.minOrderPrice}} TL</span>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadRestaurants()">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Yükleniyor...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+

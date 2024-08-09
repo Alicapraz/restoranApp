@@ -1,0 +1,59 @@
+/* Genel gövde fontu */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #FEFFF7; /* Arka plan rengini ayarlar */
+  margin: 0; /* Sayfa kenar boşluklarını sıfırlar */
+}
+
+ion-header {
+  --background: #FEFFF7; /* Başlık arka plan rengini beyaz yapar */
+}
+
+ion-toolbar{
+  background-color: #B60615;
+}
+ion-title {
+  ion-title {
+    font-size: 12pt;
+    font-weight: 400;
+    letter-spacing: 0; /* Karakter aralığı 0 */
+    line-height: 20pt; /* Satır yüksekliği 20pt */
+    color: #FFFFFF; /* Başlık yazı rengini beyaz yapar */
+    padding: 8px; /* Başlığın içindeki boşluğu artırır */
+    text-align: left; /* Başlığı sola hizalar */
+  }
+  
+}
+
+h2 {
+  font-family: 'Roboto', sans-serif; /* Roboto fontu kullanır */
+  font-weight: 500; /* Regular font ağırlığı */
+  font-size: 16pt; /* Yazı boyutu 16pt */
+  color: #343434; /* Yazı rengi */
+  letter-spacing: 0; /* Karakter aralığı 0 */
+  line-height: 20pt; /* Satır yüksekliği 20pt */
+  margin: 0; /* Başlıklar arasındaki boşluğu kaldırır */
+}
+
+h2.restaurants-title {
+  text-align: left; /* Başlığı sola hizalar */
+  margin-left: 16px; /* Soldan boşluk bırakır */
+  margin-bottom: 0px; /* Kart ile başlık arasındaki boşluğu artırır */
+  font-family: 'Roboto', sans-serif; /* Roboto fontu kullanır */
+  font-weight: 500; /* Regular font ağırlığı */
+  font-size: 16pt; /* Yazı boyutu 16pt */
+  color: #343434; /* Yazı rengi */
+  letter-spacing: 0; /* Karakter aralığı 0 */
+  line-height: 20pt; /* Satır yüksekliği 20pt */
+}
+
+
+ion-searchbar {
+  margin: 0px 0; /* Arama çubuğu ile başlıklar arasında boşluk bırakır */
+}
+
+ion-thumbnail img {
+  width: 100%;  // Görselin tam genişlikte gösterilmesi için
+  height: auto; // Görselin oranının korunması için
+  object-fit: cover; // Görselin kapsama şeklini ayarlamak için
+}
