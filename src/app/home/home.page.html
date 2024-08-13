@@ -1,17 +1,28 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Ev: 9166 / 1 Sok. No:1 D:3 Karabağlar - İzmir
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <div class="intro-text">
-    <h2>Günaydın Salih,</h2>
-    <h2>Bugün ne yemek istersin?</h2>
+
+
+<ion-content class="full" [fullscreen]="true">
+  <div class="address">
+    Ev: 9166 / 1 Sok. No:1 D:3 Karabağlar - İzmir
+    <img style="padding-left: 108px;" src="assets\asagi_ok.png" alt="asagi_ok">
   </div>
-  <ion-searchbar placeholder="Arama"></ion-searchbar>
+
+
+  <div class="intro-text">
+    <h2 class="gunaydin">Günaydın </h2>
+    <h2 class="salih"> Salih,</h2> 
+    <img class="gunes" src="assets\gunes.png" alt="">
+  </div>
+  <h2 class="soru">Bugün ne yemek istersin?</h2>  
+
+  <div class="search">
+    <ion-searchbar class="custom-searchbar" placeholder="Arama">
+    </ion-searchbar>
+    <div class="arama">
+      <img src="assets\search.png" alt="">
+    </div>
+  </div>
+  
   <h2 class="restaurants-title">Restoranlar</h2>
 
 

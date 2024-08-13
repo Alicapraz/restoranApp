@@ -1,44 +1,60 @@
-<ion-header [translucent]="true">
-  <ion-toolbar class="top-toolbar">
-    <ion-buttons slot="start">
-      <ion-icon name="arrow-back-outline" class="back-button-icon"></ion-icon>
-    </ion-buttons>
-    <ion-title class="page-title">Restoran</ion-title>
-    <ion-buttons slot="end">
-      <ion-icon name="chatbubble-outline" class="icon"></ion-icon>
-      <ion-icon name="notifications-outline" class="icon"></ion-icon>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<div class="restoran-container">
+  <ion-buttons slot="start">
+    <ion-icon style="color: #B60615;" name="chevron-back-outline" class="back-button-icon"></ion-icon>
+  </ion-buttons>
+  <div class="restoran-title">Restoran</div>
+  <ion-buttons slot="end">
+    <ion-icon name="chatbox-ellipses-outline" class="icon1"></ion-icon>
+    <ion-icon name="notifications-outline" class="icon2"></ion-icon>
+  </ion-buttons>
+</div>
 
 
 
 <ion-content *ngIf="restaurant">
   <div class="image-container">
     <ion-img [src]="restaurant.images[0].base64 ? restaurant.images[0].base64 : 'assets\tuzu-biberi-kahvalti-5.png'" [alt]="restaurant.title" />
+    <div class="dots-container">
+      <div class="dot red"></div>
+      <div class="dot white"></div>
+      <div class="dot white"></div>
+    </div>
   </div>
   
   <div class="additional-image-container">
     <img src="assets/Path 67615.png" alt="Ek Resim" class="additional-image"/>
   </div>
   <div class="text-container">
-    <div class="main-text">{{restaurant.title}}</div>
-    <div class="status-text">{{ isOpen ? 'Şuan Açık' : 'Şuan Kapalı' }} {{restaurant.storeInfo.workingHours[0].open}} - {{restaurant.storeInfo.workingHours[0].close}}</div>
+
+    <div class="title-container">
+      <div class="title">{{restaurant.title}}</div>
+      <div class=" favorite-icon-container" >
+        <img [src]="isFavorite(restaurant) ? 'assets/favv-filled.png' : 'assets/favv.png'" 
+             class="favorite-icon" 
+             (click)="toggleFavorite(restaurant)"/>
+      </div>
+    </div>
+    
+    <div class="status-text">{{ isRestaurantOpen(restaurant.storeInfo.workingHours[0].open, restaurant.storeInfo.workingHours[0].close) ? 'Şuan Açık' : 'Şuan Kapalı' }} {{restaurant.storeInfo.workingHours[0].open}} - {{restaurant.storeInfo.workingHours[0].close}}</div>
     <div class="additional-info">
-      <span>20-25dk</span>
-      <span>{{ distance}}km</span>
-      <span><img style="color: #B60615;" src="assets\Group 42153.png" alt="">Min. {{restaurant.storeInfo.minOrderPrice}} TL</span>
+      <ion-icon><img style="width: 20px; height: 20px;" src="assets\saatk.svg" alt=""></ion-icon>
+      <div style="padding-right: 10px;"> 20-25dk</div>
+      <ion-icon><img style="width: 20px; height: 20px;" src="assets\Group 42152.png" alt=""></ion-icon>
+      <div style="padding-right: 10px;">{{restaurant.distance}}km</div>
+      <ion-icon><img style="width: 20px; height: 20px;" src="assets\Group 42153.png" alt=""></ion-icon>
+      <div>Min. {{restaurant.storeInfo.minOrderPrice}} TL</div>
     </div>
   </div>
 
-  <div class="image-row image-row-upper">
+  <div class="three-container1">
     <div class="image-item-container">
       <img src="assets/Group 41541.png" alt="Resim 1" class="image-row-item"/>
       <div class="image-label">Restorandayım</div>
     </div>
     <div class="image-item-container">
       <img src="assets/Group 41558.png" alt="Resim 2" class="image-row-item"/>
-      <div class="image-label">Paket Servis</div>
+      <div class="kapalı">Kapalı</div>
+      <div class="image-label" style="margin-top: 6px;">Paket Servis</div>
     </div>
     <div class="image-item-container">
       <img src="assets/Group 41782.png" alt="Resim 3" class="image-row-item"/>
@@ -46,28 +62,48 @@
     </div>
   </div>
 
-  <div class="image-row image-row-lower">
+  <div class="three-container2">
     <div class="image-item-container">
-      <img src="assets/Group 41542.png" alt="Resim 4" class="image-row-item1"/>
+      <img src="assets/Group 41542.png" alt="Resim 4" class="image-row-item"/>
       <div class="image-label">Rezervasyon</div>
     </div>
     <div class="image-item-container">
-      <img src="assets/Group 41560.png" alt="Resim 5" class="image-row-item2"/>
-      <div class="image-label-container">
-        <div class="image-label">İletişim</div>
-        <div class="rating-box"><p>00.00</p> <p>Puanım</p></div>
+      <img src="assets/Group 41560.png" alt="Resim 5" class="image-row-item"/>
+      <div class="image-label">İletişim</div>
     </div>
+    <div class="rating-box">
+      <div class="rate">00.00</div>
+      <div class="puan">Puanım</div>
     </div>
   </div>
+  
+<div class="bar-container">
+  <div class="bar-title">Kahve Hediyesi</div>
+  <div class="bar-description">Her 5 kahve siparişinde 1 kahve bizden hediye!</div>
+  <div class="bar">
+    <div class="bar-elips-red">
+      <img src="assets\Ellipse 4.png" alt="">
+      <img src="assets\kupa.png" alt="Kupa" class="kupa">
+    </div>
+    <div class="bar-elips-grey">
+      <img class="grey-ellipse" src="assets\Ellipse 4.png" alt="">
+      <img src="assets\kupa.png" alt="Kupa" class="kupa">
+    </div>
+    <div class="bar-elips-grey">
+      <img class="grey-ellipse" src="assets\Ellipse 4.png" alt="">
+      <img src="assets\kupa.png" alt="Kupa" class="kupa">
+    </div>
+    <div class="bar-elips-grey">
+      <img class="grey-ellipse" src="assets\Ellipse 4.png" alt="">
+      <img src="assets\kupa.png" alt="Kupa" class="kupa">
+    </div>
+    <div class="bar-elips-grey">
+      <img class="grey-ellipse" src="assets\Ellipse 4.png" alt="">
+      <img src="assets\kupa.png" alt="Kupa" class="kupa">
+    </div>
+    <div class="oran">1/5</div>
+  </div>
+</div>
 
-  <div class="promo-box">
-    <div class="promo-title">Kahve Hediyesi</div>
-    <div class="promo-description">Her 5 kahve siparişinde 1 kahve bizden hediye!</div>
-    <div class="progress-bar-container">
-      <div class="progress-bar">
-        <div class="progress-bar-fill"></div>
-      </div>
-      <div class="progress-text">1/5</div>
-    </div>
-  </div>
+
 </ion-content>

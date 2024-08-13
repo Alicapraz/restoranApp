@@ -5,10 +5,13 @@ body {
   }
   
   .custom-card {
-    position: relative;
+    position: block;
     overflow: hidden;
-    width: 100%;
-    height: 250px;
+    width: auto;
+    height: 222px;
+    position: relative;
+    margin-top: 10px;
+    margin-left: 10px;
   }
   
   .card-image {
@@ -16,24 +19,44 @@ body {
     height: 100%;
     object-fit: cover;
   }
-  
-  .card-header {
+
+  .top{
     position: absolute;
-    top: 0;
-    left: 0;
-    padding: 16px;
-    z-index: 1;
     display: flex;
-    align-items: center; 
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    padding-left: 5px;
+    padding-right: 10px;
   }
   
-  .subtitle-container {
+  .favorite-icon-container {
+    background: rgba(255, 255, 255, 0.7); 
+    border-radius: 50%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .favorite-icon {
+    width: auto;
+    height: auto;
+    cursor: pointer;
+    display: flex;
+    justify-content: end;
+
+  }
+  
+  .puan {
     background: rgba(255, 255, 255, 0.5); 
-    padding: 8px 16px; 
-    border-radius: 15px; 
-    display: flex; 
-    justify-content: flex-start;
+    padding: 5px 15px; 
+    border-radius: 10px; 
+    // display: flex; 
+    // justify-content: center;
+    // align-items: center;
     margin-left: 0; 
+    margin-right: 190px;
   }
   
   .card-subtitle {
@@ -59,36 +82,21 @@ body {
   }
   
   .main-text {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: 600;
     margin-bottom: 8px; 
   }
   
-  .additional-info span {
-    font-size: 14px; 
-    margin-right: 15px; 
-  }
-  
-  .additional-info span:last-child {
-    margin-right: 0; 
-  }
-
-  .custom-card {
-    position: relative;
-  }
-  
-  .favorite-icon-container {
-    position: absolute;
+  .additional-info {
+    font-size: 8px; 
+    margin-right: 15px;
     display: flex;
-    justify-content: flex-end;
-    background: rgba(255, 255, 255, 0.7); 
-    border-radius: 50%;
-    padding: 5px;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0;
+    font-weight: 600;
   }
   
-  .favorite-icon {
-    width: auto;
-    height: auto;
-    cursor: pointer;
-  }
+  
+  
   

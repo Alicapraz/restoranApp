@@ -1,59 +1,125 @@
-/* Genel gövde fontu */
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #FEFFF7; /* Arka plan rengini ayarlar */
-  margin: 0; /* Sayfa kenar boşluklarını sıfırlar */
+  background-color: #FEFFF7 !important;
+}
+.full{
+  font-family: 'Roboto', sans-serif;
+  background-color: #FEFFF7 !important;
 }
 
-ion-header {
-  --background: #FEFFF7; /* Başlık arka plan rengini beyaz yapar */
+.address {
+  font-family: 'Roboto', sans-serif; 
+  font-weight: 400;
+  font-size: 12px; 
+  color: #FFFFFF; 
+  letter-spacing: 0; 
+  line-height: 20px; 
+  background-color: #B60615; 
+  padding: 5px;
+  display: flex; 
+  justify-content: flex-start;
+  align-items: center; 
+  margin: 0;
 }
 
-ion-toolbar{
-  background-color: #B60615;
+.intro-text{
+  padding-top: 10px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
 }
-ion-title {
-  ion-title {
-    font-size: 12pt;
-    font-weight: 400;
-    letter-spacing: 0; /* Karakter aralığı 0 */
-    line-height: 20pt; /* Satır yüksekliği 20pt */
-    color: #FFFFFF; /* Başlık yazı rengini beyaz yapar */
-    padding: 8px; /* Başlığın içindeki boşluğu artırır */
-    text-align: left; /* Başlığı sola hizalar */
-  }
+
+.gunaydin{
+  display: inline;
+  align-items: center;
+  font-family: 'Roboto', sans-serif; 
+  font-weight: 400; 
+  font-size: 16px; 
+  color: #343434; 
+  letter-spacing: 0; 
+  line-height: 20px; 
+  margin-right: 5px;
+  margin: 0;
   
 }
-
-h2 {
-  font-family: 'Roboto', sans-serif; /* Roboto fontu kullanır */
-  font-weight: 500; /* Regular font ağırlığı */
-  font-size: 16pt; /* Yazı boyutu 16pt */
-  color: #343434; /* Yazı rengi */
-  letter-spacing: 0; /* Karakter aralığı 0 */
-  line-height: 20pt; /* Satır yüksekliği 20pt */
-  margin: 0; /* Başlıklar arasındaki boşluğu kaldırır */
+.salih {
+  align-items: center;
+  font-family: 'Roboto', sans-serif; 
+  font-weight: 600; 
+  font-size: 16px; 
+  color: #343434; 
+  letter-spacing: 0; 
+  line-height: 20px; 
+  margin: 0; 
+  padding-left: 0.25em;
 }
 
-h2.restaurants-title {
-  text-align: left; /* Başlığı sola hizalar */
-  margin-left: 16px; /* Soldan boşluk bırakır */
-  margin-bottom: 0px; /* Kart ile başlık arasındaki boşluğu artırır */
-  font-family: 'Roboto', sans-serif; /* Roboto fontu kullanır */
-  font-weight: 500; /* Regular font ağırlığı */
-  font-size: 16pt; /* Yazı boyutu 16pt */
-  color: #343434; /* Yazı rengi */
-  letter-spacing: 0; /* Karakter aralığı 0 */
-  line-height: 20pt; /* Satır yüksekliği 20pt */
+.soru{
+  display: block;
+  align-items: center;
+  font-family: 'Roboto', sans-serif; 
+  font-weight: 400; 
+  font-size: 16px; 
+  color: #343434; 
+  letter-spacing: 0; 
+  line-height: 20px; 
+  margin: 0;
+  padding-left: 10px;
+  padding-top: 0;
+}
+
+.gunes{
+  // position: absolute;
+  padding-left: 0.25em;
+  padding-bottom: 0;
 }
 
 
-ion-searchbar {
-  margin: 0px 0; /* Arama çubuğu ile başlıklar arasında boşluk bırakır */
+.restaurants-title {
+  text-align: left; 
+  font-family: 'Roboto', sans-serif; 
+  font-weight: 600; 
+  font-size: 16px; 
+  color: #343434; 
+  letter-spacing: 0; 
+  line-height: 20px; 
+  margin: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+.search{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 10px;
+}
+.arama {
+  background-color: #B60615; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  width: 40px; 
+  height: 40px; 
+  border-radius: 12px; 
+}
+.custom-searchbar {
+  --padding-start: 0; /* Varsayılan iç padding'i kaldırın */
 }
 
-ion-thumbnail img {
-  width: 100%;  // Görselin tam genişlikte gösterilmesi için
-  height: auto; // Görselin oranının korunması için
-  object-fit: cover; // Görselin kapsama şeklini ayarlamak için
+.custom-searchbar .search-icon {
+  background-image: url('../../assets/buyutec.png'); /* İkon resminizi burada belirtin */
+  background-size: 20px 20px; /* İkon boyutunu ayarlayın */
+  background-repeat: no-repeat; /* Tekrarlamayı kapatın */
+  background-position: center; /* İkonu ortalayın */
+  width: 20px; /* İkonun genişliği */
+  height: 20px; /* İkonun yüksekliği */
+  display: inline-block; /* Satır içi blok yapısı */
 }
+
+ion-searchbar .searchbar-input {
+  padding-left: 24px; /* Simgeyi sola doğru kaydırın */
+}
+
+
+
+

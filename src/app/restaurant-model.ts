@@ -1,4 +1,5 @@
 export class restaurant{
+    distance!:string;
     id!: string;
     title!: string;
     images!: [
