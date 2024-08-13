@@ -8,10 +8,7 @@ const routes: Routes = [
     path: '',
     component: HomePage,
   },
-  // {
-  //   path: 'detail',
-  //   component: CardDetailPageComponent,
-  // }
+  
 ];
 
 @NgModule({

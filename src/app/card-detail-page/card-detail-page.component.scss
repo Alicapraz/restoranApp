@@ -61,17 +61,17 @@ ion-content {
 }
 .dots-container {
     position: absolute;
-    bottom: 0px; /* Resmin en altına 10px uzaklıkta */
+    bottom: 0px; 
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 3px; /* Noktalar arasındaki boşluk */
+    gap: 3px; 
   }
   .dot {
     width: 9px;
     height: 9px;
-    border-radius: 50%; /* Noktaların yuvarlak olması için */
-    background-color: white; /* Varsayılan renk */
+    border-radius: 50%; 
+    background-color: white; 
   }
   .dot.red {
     background-color: #B60615;

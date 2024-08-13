@@ -17,15 +17,6 @@ export class RestaurantService {
   constructor(private http: HttpClient) {}
 
 
-  // getRestaurants(skip: number, limit: number, latitude: number, longitude: number): Observable<any> {
-  //   const body = { "skip":skip, "limit":limit, "latitude":latitude, "longitude":longitude };
-  //   console.log('getRestaurants - Sending payload:', body);
-  //   return this.http.post<any>(`${this.apiUrl}/getFeed`, body, { headers: this.headers })
-  //   .pipe(
-  //     tap(response => console.log('getRestaurants - Response:', response))
-  //   );;
-  // }
-
   getRestaurants(latitude: number, longitude: number, skip: number, limit: number): Observable<any> {
     const headers = new HttpHeaders({
       'apiKey': this.apiKey
@@ -62,9 +53,6 @@ export class RestaurantService {
     });
   }
 
-  // getRestaurantById(id: string): Observable<any> {
-  //   const body = { id: id };
-  //   return this.http.post<any>(`${this.apiUrl}/getFeed`, body, { headers: this.headers });
-  // }
+  
   
 }

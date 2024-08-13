@@ -103,21 +103,21 @@ body {
   border-radius: 12px; 
 }
 .custom-searchbar {
-  --padding-start: 0; /* Varsayılan iç padding'i kaldırın */
+  --padding-start: 0; 
 }
 
 .custom-searchbar .search-icon {
-  background-image: url('../../assets/buyutec.png'); /* İkon resminizi burada belirtin */
-  background-size: 20px 20px; /* İkon boyutunu ayarlayın */
-  background-repeat: no-repeat; /* Tekrarlamayı kapatın */
-  background-position: center; /* İkonu ortalayın */
-  width: 20px; /* İkonun genişliği */
-  height: 20px; /* İkonun yüksekliği */
-  display: inline-block; /* Satır içi blok yapısı */
+  background-image: url('../../assets/buyutec.png'); 
+  background-size: 20px 20px; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  width: 20px; 
+  height: 20px; 
+  display: inline-block; 
 }
 
 ion-searchbar .searchbar-input {
-  padding-left: 24px; /* Simgeyi sola doğru kaydırın */
+  padding-left: 24px; 
 }
 
 
