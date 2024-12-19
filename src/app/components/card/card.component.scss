@@ -2,13 +2,13 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: #FEFFF7;
     margin: 0;
+    height: auto;
   }
   
   .custom-card {
-    position: block;
     overflow: hidden;
     width: auto;
-    height: 222px;
+    height: auto;
     position: relative;
     margin-top: 10px;
     margin-left: 10px;
@@ -28,6 +28,7 @@ body {
     padding-top: 15px;
     padding-left: 5px;
     padding-right: 10px;
+    width: 100%;
   }
   
   .favorite-icon-container {
@@ -37,6 +38,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 0px;
   }
   
   .favorite-icon {
@@ -45,6 +47,7 @@ body {
     cursor: pointer;
     display: flex;
     justify-content: end;
+    margin-right: 0px;
 
   }
   
@@ -68,14 +71,14 @@ body {
   }
   
   .card-content {
-    position: absolute;
-    bottom: 0;
+    position: absolute; 
+    bottom: -81px;
     left: 0;
     right: 0;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
     color: #fff; 
     padding: 16px;
-    z-index: 1;
+    z-index: 1; 
   }
   
   .main-text {
@@ -92,6 +95,39 @@ body {
     justify-content: flex-start;
     margin: 0;
     font-weight: 600;
+
+  }
+
+  .search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 10px;
+  }
+  .arama {
+    background-color: #B60615; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: 40px; 
+    height: 40px; 
+    border-radius: 12px; 
+  }
+  .custom-searchbar {
+    --padding-start: 0; 
+  }
+  
+  .custom-searchbar .search-icon {
+    background-size: 20px 20px; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    width: 20px; 
+    height: 20px; 
+    display: inline-block; 
+  }
+  
+  ion-searchbar .searchbar-input {
+    padding-left: 24px; 
   }
   
   

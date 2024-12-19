@@ -6,10 +6,12 @@ import { RestaurantService } from '../services/restaurant.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
+  address!:any;
   
-
-  
-
-  
+constructor(private restaurantService:RestaurantService){
+}
+  ngOnInit(): void {
+    this.address = this.restaurantService.getCurrentLocation();
+  }  
 }

@@ -21,14 +21,15 @@ export class RestaurantService {
     const headers = new HttpHeaders({
       'apiKey': this.apiKey
     });
-  
+    
     return this.http.post<any>(
       `${this.apiUrl}/getFeed`,  
       {
         skip: skip,
         limit: limit,
         latitude: latitude,
-        longitude: longitude
+        longitude: longitude,
+        
       },
       { headers: headers }
     );
@@ -52,6 +53,9 @@ export class RestaurantService {
       };
     });
   }
+
+
+  
 
   
   

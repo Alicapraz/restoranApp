@@ -2,50 +2,101 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { RestaurantService } from 'src/app/services/restaurant.service';
 
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { updateSearchTerm, loadRestaurants } from 'src/app/store/restaurant.actions';
+import { selectFilteredRestaurants, selectSearchTerm } from 'src/app/store/restaurant.selectors';
+
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent  implements OnInit {
+
+  restaurants$: Observable<any[]> = this.store.select(selectFilteredRestaurants);
+  searchTerm$: Observable<string> = this.store.select(selectSearchTerm);
+  
   restaurants: any[] = [];  
-  skip = 1;
+  skip = 0;
   limit = 10;  
   latitude!:number; 
   longitude!:number;  
   favorites: Set<string> = new Set();
 
-  constructor(private restaurantService: RestaurantService, private nav: NavController) {}
+  constructor(private restaurantService: RestaurantService, private nav: NavController, private store: Store) {}
 
   ngOnInit() {
-
+    this.skip = 0;
+    this.restaurants$ = this.store.select(selectFilteredRestaurants);
     this.getLocationRestaurants();
+
   }
-  
 
   loadRestaurants(event?: any) {
     if (this.latitude && this.longitude) {
-      this.restaurantService.getRestaurants(this.latitude, this.longitude, this.skip, this.limit).subscribe(data => {
-        const newRestaurants = data.response.map((restaurant: any) => {
-          const distance = this.getDistanceFromLatLonInKm(
-            this.latitude, this.longitude, restaurant.location.coordinates[1], restaurant.location.coordinates[0],
-          );
-          return { ...restaurant, distance: distance.toFixed(2) };
+      this.restaurantService
+        .getRestaurants(this.latitude, this.longitude, this.skip, this.limit)
+        .subscribe({
+          next: (data) => {
+            
+            // this.store.dispatch(loadRestaurants({ restaurants: data.response }));
+
+            const newRestaurants = data.response.map((restaurant: any) => {
+              const distance = this.getDistanceFromLatLonInKm(
+                this.latitude,
+                this.longitude,
+                restaurant.location.coordinates[1],
+                restaurant.location.coordinates[0]
+              );
+              return { 
+                ...restaurant, 
+                distance: distance.toFixed(2) 
+              };
+            });
+  
+            
+            this.restaurants = [...this.restaurants, ...newRestaurants];
+
+            // this.store.dispatch(loadRestaurants({ restaurants: this.restaurants }));
+            
+
+            this.store.dispatch(loadRestaurants({ restaurants: newRestaurants }));
+            
+            if (newRestaurants.length < this.limit && event) {
+              event.target.disabled = true;
+            } else {
+              
+              this.skip += this.limit;
+            }
+  
+            
+            if (event) {
+              event.target.complete();
+            }
+            this.store.dispatch(loadRestaurants({ restaurants: newRestaurants }));
+
+          },
+          error: (err) => {
+            console.error('Veriler yüklenirken hata oluştu:', err);
+            if (event) {
+              event.target.complete();
+            }
+          },
         });
-        this.restaurants = [...this.restaurants, ...newRestaurants];
-
-        if (event) {
-          event.target.complete();
-        }
-
-        if (newRestaurants.length < 10) {
-          event.target.disabled = true;
-        }
-
-        
-      });
     }
   }
+  
+  // getLocationRestaurants() {
+  //   this.restaurantService.getCurrentLocation().then((location) => {
+  //     this.restaurantService
+  //       .getRestaurants(location.latitude, location.longitude, this.skip, this.limit)
+  //       .subscribe((data) => {
+  //         this.store.dispatch(loadRestaurants({ restaurants: data }));
+  //       });
+  //   });
+  // }
+  
 
   getLocationRestaurants(){
     this.restaurantService.getCurrentLocation().then((location) => {
@@ -54,6 +105,8 @@ export class CardComponent  implements OnInit {
         this.loadRestaurants()
     });
   }
+
+
 
   getDistanceFromLatLonInKm(lat1: number, lon1: number, lat2: number, lon2: number): number {
     const R = 6371; 
@@ -72,7 +125,8 @@ export class CardComponent  implements OnInit {
     return deg * (Math.PI / 180);
   }
 
-  
+
+
   openDetail(id: string) {
     
     const restaurant = this.restaurants.find(r => r.id === id);
@@ -80,9 +134,13 @@ export class CardComponent  implements OnInit {
   }
 
 
+
+
   isFavorite(restaurant: any): boolean {
     return this.favorites.has(restaurant.id);
   }
+
+
 
   toggleFavorite(restaurant: any): void {
     if (this.isFavorite(restaurant)) {
@@ -91,4 +149,21 @@ export class CardComponent  implements OnInit {
       this.favorites.add(restaurant.id);
     }
   }
+
+  // onSearchChange(event: any) {
+  //   const searchTerm = event.detail.value;
+  //   console.log('Search Term:', searchTerm);  // Arama terimi burada doğrulanacak
+  //   this.store.dispatch(updateSearchTerm({ searchTerm }));
+  // }
+  onSearchChange(event: any) {
+    const searchTerm = event.target.value;
+  
+    // Search term'i store'da güncelle
+    this.store.dispatch(updateSearchTerm({ searchTerm }));
+  
+    // Skip değerini sıfırla ve yeni sonuçları yükle
+    this.skip = 0;
+    this.loadRestaurants(searchTerm);
+  }
+
 }

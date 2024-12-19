@@ -3,9 +3,17 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
 </head>
 
+<ion-content>
 
-  <ion-card *ngFor="let restaurant of restaurants" class="custom-card" > 
-    
+  <div class="search">
+    <ion-searchbar (ionInput)="onSearchChange($event)" class="custom-searchbar" placeholder="Arama">
+    </ion-searchbar>
+    <div class="arama">
+      <img src="assets\search.png" alt="">
+    </div>
+  </div>
+
+  <ion-card *ngFor="let restaurant of restaurants$ | async" class="custom-card" > 
     
       <div class="top">
         <div class="puan">
@@ -18,7 +26,11 @@
         </div>
       </div>
 
-    <ion-img (click)="openDetail(restaurant.id)" [src]="restaurant.images[0].base64 ? restaurant.images[0].base64 : 'assets\tuzu-biberi-kahvalti-5.png'" [alt]="restaurant.title" />
+    <ion-img 
+    (click)="openDetail(restaurant.id)" 
+    [src]="restaurant.images?.[0]?.base64 ? restaurant.images[0].base64 : 'assets/tuzu-biberi-kahvalti-5.png'" 
+    [alt]="restaurant.title">
+  </ion-img>
 
     <ion-card-content class="card-content" (click)="openDetail(restaurant.id)">
       <p class="main-text">{{restaurant.title}}</p>
@@ -31,12 +43,19 @@
         <img style="margin-right: 3px;" src="assets\Group 42153.png" alt="">
         <div> {{restaurant.storeInfo.minOrderPrice}} TL</div>
       </div>
+
+      <ion-infinite-scroll threshold="100px" >
+        <ion-infinite-scroll-content loadingSpinner="none" loadingText="Yükleniyor...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>  
+      
     </ion-card-content>
   </ion-card>
-
-
-  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadRestaurants()">
-    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Yükleniyor...">
+  
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadRestaurants($event)">
+    <ion-infinite-scroll-content loadingSpinner="none" loadingText="Yükleniyor...">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 
+
+</ion-content>

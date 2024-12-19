@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RestaurantService } from '../services/restaurant.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { restaurant } from '../restaurant-model';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-card-detail-page',
@@ -21,14 +22,14 @@ export class CardDetailPageComponent  implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private restaurantService: RestaurantService,
-    private router: Router
+    private router: Router,
+    private nav: NavController
   ) {}
 
 
   ngOnInit() {
     const navigation = this.router.getCurrentNavigation();
     const state = navigation?.extras.state as { restaurant: restaurant };
-    console.log(state);
   
     if (state && state.restaurant) {
       this.restaurant = state.restaurant;
@@ -102,7 +103,6 @@ export class CardDetailPageComponent  implements OnInit {
           return { ...restaurant, distance: distance.toFixed(2) };
         });
         this.restaurants = [...this.restaurants, ...newRestaurants];
-
         if (event) {
           event.target.complete();
         }
@@ -147,6 +147,11 @@ export class CardDetailPageComponent  implements OnInit {
     } else {
       this.favorites.add(restaurant.id);
     }
+  }
+
+  goBack()
+  {
+    this.nav.navigateForward('/home');
   }
   
 }

@@ -5,13 +5,16 @@ ion-content {
     --background: #FEFFF7; 
 }
 .restoran-container {
+    width: 100%;
     background-color: #FEFFF7;
     color: #343434; 
     margin: 0;
     padding-bottom: 0;
     display: flex;
+    justify-content: space-between;
     padding-top: 2px;
-    margin-top: 0
+    margin-top: 0;
+    
 }
 .restoran-title {
     font-family: 'Roboto', sans-serif;
@@ -33,35 +36,43 @@ ion-content {
     font-size: 20px;
     font-weight: 400;
     align-items: center;
-    padding-right: 140px;
+    
 }
 .icon1 {
     color: #343434; 
     font-size: 22px;
     margin-left: 10px; 
     padding-bottom: 2px;
-    padding-left: 80px;
+    
 }
 .icon2 {
     color: #343434; 
     font-size: 22px;
     margin-left: 10px; 
     padding-bottom: 2px;
-    padding-left: 5px;
+    
+    display: flex;
+    justify-content: end;
 }
 .image-container {
-    position: relative;
-    height: 235px; 
+    margin: 0;
+    padding: 0;
+    height: auto; 
     width: 100%;
+    display: flex;
+    align-items: end;
 }
-.background-image {
+.restaurant-image {
+    margin-top: 0px;
+    padding-top: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: fill;
+    
 }
 .dots-container {
     position: absolute;
-    bottom: 0px; 
+    padding-bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -76,22 +87,27 @@ ion-content {
   .dot.red {
     background-color: #B60615;
   }
+.info-container{
+  display: flex;
+  justify-content:space-between;
+}
 .additional-image-container {
-    position: absolute;
-    padding-left: 0px; 
     padding-top: 10px;
+    display: flex;
+    justify-content: left;
 }
 .additional-image {
-    width: 89px; 
+    width: auto; 
     height: auto; 
 }
 .text-container {
-    position: absolute;
-    left: 80px; 
+    display: block;
+    justify-content: center; 
     padding: 10px;   
 }
 .title-container{
     display: flex;
+    justify-content: baseline; 
     padding-top: 8px;
 }
 .title {
@@ -104,11 +120,11 @@ ion-content {
     line-height: 20px;  
 }
 .favorite-icon-container{
-    padding-right: 12px;
-    padding-top: 5px;
+    padding-top: 15px;
+    padding-right: 15px;
 }
 .favorite-icon {
-    width: 18px;
+    width: auto;
     height: auto;
     cursor: pointer;
   }
@@ -135,15 +151,17 @@ ion-content {
   }
 .three-container1{
     display: flex;
-    padding-top: 110px;
     font-size: 12px;
     justify-content: space-around;
     padding-bottom: 10px;
+    
 }  
 .three-container2{
     display: flex;
     justify-content: space-around;
     font-size: 12px;
+    
+
 }  
 .image-item-container{
     width: 110px;
@@ -208,12 +226,13 @@ ion-content {
     margin-top: 11px;
   }
   .bar-container{
-    width: 365px;
-    height: 93px;
+    width: 100%;
+    height: 11%;
     background-color: #ffffff;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     margin: 15px 10px;
+    
     
   }
   .bar-title {
